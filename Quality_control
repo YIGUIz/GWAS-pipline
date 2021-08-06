@@ -1,0 +1,16 @@
+############################## Quality control ##############################
+## software : python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+############## 1.1 phenotype - filer by the reliability ##################
+data_path  = r'C:\Users\Administrator\Desktop\Test\data.txt' #need to modify the parameter
+data = pd.read_csv(data_path,sep='\s+')
+qc_data = data[(data['REL_pro']>50) & (data['REL_SCS']>50)]
+
+############## 1.2 phenotype - z-score ###################################
+sta_qc_data = (qc_data-qc_data.mean())/(qc_data.std())
+sta_qc_data['ID'] = qc_data['ID']
+sta_qc_data.to_csv(r'C:\Users\Administrator\Desktop\Test\qc_data.txt',sep = '\t', index = False, header = True)
+
