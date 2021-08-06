@@ -1,0 +1,32 @@
+############################## Basic information about the data ##############################
+## software : python
+import pandas as pd
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+############## 1.1 Descriptive statistics ##################
+data_path  = r'C:\Users\Administrator\Desktop\Test\data.txt' #need to modify the parameter
+data = pd.read_csv(data_path,sep='\s+')
+data.info()
+data.describe()
+
+############## 1.2 Descriptive statistics - plot ##############
+n_bins = 25
+fig, ax = plt.subplots()
+ax.hist(data['REL'], n_bins, density = True, color = '#F08080') #need to modify the parameter
+
+ax.set_ylabel('Reliability') 
+ax.set_xlabel('Frequency')
+ax.set_title('Histogram of Dairy Cow Reliability Frequency Distribution-test')
+fig.savefig('test-plot1', dpi = 600)
+
+############## 2.1 Normal Distribution test - plot #################
+fig, ax =plt.subplots()
+ax.hist(data['MY'], n_bins, density = True, color = '#87CEFF') #need to modify the parameter
+data['MY'].plot(kind = 'kde', style = 'k--', lw = 1, ax = ax)  
+ax.set_title('MY')
+
+############## 2.1 Normal Distribution test- K-S TEST #################
+MY_ks = stats.kstest(data['MY'],'norm',(data['MY'].mean(),data['MY'].std()))
+#the pvalue > 0.05 means it's a normal distribution
