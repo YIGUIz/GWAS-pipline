@@ -23,4 +23,5 @@ for i in range(1,len(data_col)):
 sta_qc_data = (qc_data-qc_data.mean())/(qc_data.std())
 sta_qc_data['ID'] = qc_data['ID']
 
-
+############## 1.3 phenotype - cycle #####################################################################
+# you can perform the basic information again
