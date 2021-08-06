@@ -1,6 +1,6 @@
 # GWAS-pipline
 
-##一、Basic information about the data
+## 一、Basic information about the data
 
 1.Descriptive statistics
 
