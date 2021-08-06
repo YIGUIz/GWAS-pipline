@@ -31,7 +31,6 @@ ax.set_title('MY')
 MY_ks = stats.kstest(data['MY'],'norm',(data['MY'].mean(),data['MY'].std()))
 #the pvalue > 0.05 means it's a normal distribution
 
-
 ############## 3.1 Cow Distribution test- Province #################
 cow_distribu(input_data,out_file,error_file) #the data should contain the ID
 
