@@ -1,2 +1,8 @@
 # GWAS-pipline
-the pipline of Genome-Wide Association Studies
+
+##一、Basic information about the data
+
+1.Descriptive statistics
+
+2.Normal distribution test
+
