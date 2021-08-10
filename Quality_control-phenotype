@@ -4,13 +4,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-############## 1.1 phenotype - filer by the reliability ####################################################
+############## 1 phenotype - filer by the reliability ####################################################
 data_path  = r'C:\Users\Administrator\Desktop\Test\data.txt' #need to modify the parameter
 data = pd.read_csv(data_path,sep='\s+')
 qc_data = data[(data['REL_pro']>50) & (data['REL_SCS']>50)]
 qc_data.to_csv(r'C:\Users\Administrator\Desktop\Test\qc_data.txt',sep = '\t', index = False, header = True)
 
-############## 1.2 phenotype - standardized normal distribution - Box-cox ###################################
+############## 1 phenotype - standardized normal distribution - Box-cox ###################################
 #tranform the data to positive
 data_col = qc_data.columns
 for i in range(1,len(data_col)):
@@ -19,9 +19,9 @@ for i in range(1,len(data_col)):
 for i in range(1,len(data_col)):
     qc_data[data_col[i]] = stats.boxcox(qc_data[data_col[i]])[0] 
 
-############## 1.3 phenotype - z-score #####################################################################
+############## 1 phenotype - z-score #####################################################################
 sta_qc_data = (qc_data-qc_data.mean())/(qc_data.std())
 sta_qc_data['ID'] = qc_data['ID']
 
-############## 1.4 phenotype - cycle #####################################################################
+############## 1 phenotype - cycle #####################################################################
 # you can perform the basic information again
